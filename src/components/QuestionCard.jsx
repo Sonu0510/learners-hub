@@ -9,7 +9,6 @@ function QuestionCard({ question }) {
 
   return (
     <article className={`question-card ${isOpen ? "open" : ""}`}>
-
       <button
         className="question-header"
         onClick={() => setIsOpen(!isOpen)}
@@ -17,30 +16,20 @@ function QuestionCard({ question }) {
       >
         <span className="question-badge">Q</span>
 
-        <p className="question-text">
-          {question.question}
-        </p>
+        <p className="question-text">{question.question}</p>
 
-        <span className="question-arrow">
-          {isOpen ? "▲" : "▼"}
-        </span>
-
+        <span className="question-arrow">{isOpen ? "▲" : "▼"}</span>
       </button>
 
       {isOpen && (
         <div className="question-body">
-
           {answer ? (
             <AnswerCard answer={answer.answer} />
           ) : (
-            <p className="answer-empty">
-              Answer coming soon.
-            </p>
+            <p className="answer-empty">Answer coming soon.</p>
           )}
-
         </div>
       )}
-
     </article>
   );
 }

@@ -8,7 +8,7 @@ import "./Home.css";
 function Home() {
   const totalQuestions = scienceData.chapters.reduce(
     (total, chapter) => total + chapter.questions.length,
-    0
+    0,
   );
 
   return (
@@ -22,14 +22,19 @@ function Home() {
           questions={totalQuestions}
         />
 
-        <section className="section-heading">
-          <p>Class 9 · Science</p>
-          <h2>Chapters</h2>
+        <section className="course-header">
+          <div>
+            <p className="course-label">Currently Available</p>
+            <h2>Class 9 Science</h2>
+            <p className="course-description">
+              Browse chapter-wise questions and teacher-written answers.
+            </p>
+          </div>
+
+          <button className="doubt-btn">Submit a Doubt</button>
         </section>
 
         <ChapterList chapters={scienceData.chapters} />
-
-       
       </main>
     </div>
   );
