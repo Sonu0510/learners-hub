@@ -1,4 +1,5 @@
 import QuestionCard from "./QuestionCard";
+import "./ChapterCard.css";
 
 function ChapterCard({ chapter }) {
   return (

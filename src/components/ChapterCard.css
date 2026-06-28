@@ -1,0 +1,43 @@
+.chapter-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+
+.chapter-header {
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.chapter-number {
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.chapter-header h3 {
+  flex: 1;
+  font-size: 18px;
+}
+
+.qa-count {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.questions-list {
+  padding: 16px;
+}
+
+.empty {
+  color: var(--muted);
+  font-size: 14px;
+}
