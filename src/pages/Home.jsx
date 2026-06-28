@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Stats from "../components/Stats";
 import ChapterList from "../components/ChapterList";
+import "./Home.css";
 
 function Home() {
   const totalQuestions = scienceData.chapters.reduce(

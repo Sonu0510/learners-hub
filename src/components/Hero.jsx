@@ -1,7 +1,9 @@
+import "./Hero.css";
+
 function Hero() {
   return (
     <section className="hero">
-      <div className="hero-badge">Class 9 Science Learning Resource</div>
+      <div className="hero-badge">Free Learning Resources . Open for Students</div>
 
       <h1>
         Every question deserves <br />

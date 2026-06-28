@@ -1,0 +1,12 @@
+.section-heading {
+  margin: 28px 0 20px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.section-heading h2 {
+  font-size: 28px;
+}

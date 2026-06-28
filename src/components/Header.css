@@ -1,0 +1,35 @@
+.header {
+  height: 60px;
+  padding: 0 24px;
+  background: rgba(24, 28, 39, 0.95);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.login-btn {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
