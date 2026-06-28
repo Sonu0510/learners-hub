@@ -1,0 +1,23 @@
+.answer-card {
+  margin-top: 12px;
+  padding: 14px;
+  background: rgba(79, 142, 247, 0.06);
+  border: 1px solid rgba(79, 142, 247, 0.18);
+  border-radius: 10px;
+}
+
+.answer-label {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.answer-text {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 15px;
+}
