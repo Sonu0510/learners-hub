@@ -17,4 +17,4 @@ function QuestionCard({ question }) {
   );
 }
 
-export default QuestionCard;
+export default QuestionCard;                                                      

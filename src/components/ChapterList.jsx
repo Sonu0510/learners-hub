@@ -1,4 +1,5 @@
 import ChapterCard from "./ChapterCard";
+import "./ChapterList.css";
 
 function ChapterList({ chapters }) {
   return (

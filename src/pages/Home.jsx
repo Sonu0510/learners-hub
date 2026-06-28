@@ -27,6 +27,8 @@ function Home() {
           <h2>Chapters</h2>
         </section>
 
+        <ChapterList chapters={scienceData.chapters} />
+
        
       </main>
     </div>
