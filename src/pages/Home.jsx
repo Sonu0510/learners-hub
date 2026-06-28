@@ -2,7 +2,7 @@ import { scienceData } from "../data/scienceData";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Stats from "../components/Stats";
-import ChapterCard from "../components/ChapterCard";
+import ChapterList from "../components/ChapterList";
 
 function Home() {
   const totalQuestions = scienceData.chapters.reduce(
@@ -26,11 +26,7 @@ function Home() {
           <h2>Chapters</h2>
         </section>
 
-        <div className="chapter-list">
-          {scienceData.chapters.map((chapter) => (
-            <ChapterCard key={chapter.id} chapter={chapter} />
-          ))}
-        </div>
+       
       </main>
     </div>
   );
