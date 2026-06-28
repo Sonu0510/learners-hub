@@ -1,3 +1,5 @@
+import "./QuestionCard.css";
+
 function QuestionCard({ question, answer }) {
   return (
     <article className="question-card">
