@@ -1,3 +1,5 @@
+import "./Stats.css";
+
 function Stats({ chapters, questions }) {
   return (
     <section className="stats">
