@@ -1,40 +1,105 @@
+import { useState } from "react";
+
 import { scienceData } from "../data/scienceData";
+
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Stats from "../components/Stats";
+import SearchBar from "../components/SearchBar";
 import ChapterList from "../components/ChapterList";
+
 import "./Home.css";
 
 function Home() {
   const totalQuestions = scienceData.chapters.reduce(
     (total, chapter) => total + chapter.questions.length,
-    0,
+    0
   );
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredChapters = scienceData.chapters
+    .map((chapter) => {
+      const term = searchTerm.toLowerCase().trim();
+
+      if (!term) return chapter;
+
+      const chapterMatches =
+        chapter.name.toLowerCase().includes(term) ||
+        String(chapter.chapter_number).includes(term);
+
+      const filteredQuestions = chapter.questions.filter((question) => {
+        const questionText = question.question.toLowerCase();
+
+        const answerText =
+          question.answers
+            ?.map((answer) => answer.answer.toLowerCase())
+            .join(" ") || "";
+
+        return (
+          questionText.includes(term) ||
+          answerText.includes(term)
+        );
+      });
+
+      if (chapterMatches || filteredQuestions.length > 0) {
+        return {
+          ...chapter,
+          questions: chapterMatches
+            ? chapter.questions
+            : filteredQuestions,
+        };
+      }
+
+      return null;
+    })
+    .filter(Boolean);
 
   return (
     <div className="page">
       <Header />
+
       <Hero />
 
       <main className="container" id="chapters">
+
         <Stats
           chapters={scienceData.chapters.length}
           questions={totalQuestions}
         />
 
-        <section className="course-header">
+        <SearchBar
+          value={searchTerm}
+          onChange={setSearchTerm}
+        />
+
+        <section className="course-banner">
           <div>
-            <p className="course-label">Currently Available</p>
+            <span className="course-label">
+              Currently Available
+            </span>
+
             <h2>Class 9 Science</h2>
-            <p className="course-description">
-              Browse chapter-wise questions and teacher-written answers.
+
+            <p>
+              Browse chapter-wise questions and
+              teacher-written answers.
             </p>
           </div>
 
-          <button className="doubt-btn">Submit a Doubt</button>
+          <button className="primary-btn">
+            Submit a Doubt
+          </button>
         </section>
 
-        <ChapterList chapters={scienceData.chapters} />
+        <ChapterList chapters={filteredChapters} />
+
+        {filteredChapters.length === 0 && (
+          <p className="no-results">
+            No matching chapter, question or answer found.
+          </p>
+        )}
+
       </main>
     </div>
   );

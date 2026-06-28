@@ -1,0 +1,31 @@
+.search-bar {
+  max-width: 620px;
+  margin: 0 auto 28px;
+  position: relative;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 14px 46px 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+}
+
+.search-bar input:focus {
+  border-color: var(--accent);
+}
+
+.search-bar input::placeholder {
+  color: var(--muted);
+}
+
+.search-bar span {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
