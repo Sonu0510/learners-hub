@@ -1,10 +1,18 @@
 import "./QuestionCard.css";
+import AnswerCard from "./AnswerCard";
 
-function QuestionCard({ question, answer }) {
+function QuestionCard({ question }) {
+  const answer = question.answers?.[0];
+
   return (
     <article className="question-card">
-      <p className="question-text">{question}</p>
-      <p className="answer-text">{answer}</p>
+      <p className="question-text">{question.question}</p>
+
+      {answer ? (
+        <AnswerCard answer={answer.answer} />
+      ) : (
+        <p className="answer-empty">Answer coming soon.</p>
+      )}
     </article>
   );
 }

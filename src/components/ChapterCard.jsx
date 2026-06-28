@@ -5,8 +5,8 @@ function ChapterCard({ chapter }) {
   return (
     <section className="chapter-card">
       <div className="chapter-header">
-        <span className="chapter-number">Ch {chapter.id}</span>
-        <h3>{chapter.title}</h3>
+        <span className="chapter-number">Ch {chapter.chapter_number}</span>
+        <h3>{chapter.name}</h3>
         <span className="qa-count">
           {chapter.questions.length} Q&A
         </span>
@@ -19,8 +19,7 @@ function ChapterCard({ chapter }) {
           chapter.questions.map((item) => (
             <QuestionCard
               key={item.id}
-              question={item.question}
-              answer={item.answer}
+              question={item}
             />
           ))
         )}
