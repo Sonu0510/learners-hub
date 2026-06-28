@@ -13,11 +13,17 @@ function ChapterCard({ chapter }) {
         onClick={() => setIsOpen(!isOpen)}
         type="button"
       >
-        <span className="chapter-number">Ch {chapter.chapter_number}</span>
+        <div className="chapter-left">
+          <span className="chapter-number">Ch {chapter.chapter_number}</span>
 
-        <h3>{chapter.name}</h3>
-
-        <span className="qa-count">{questions.length} Q&A</span>
+          <div>
+            <h3>{chapter.name}</h3>
+            <p>
+              {questions.length} approved question
+              {questions.length !== 1 ? "s" : ""}
+            </p>
+          </div>
+        </div>
 
         <span className="chapter-arrow">{isOpen ? "▲" : "▼"}</span>
       </button>
@@ -25,7 +31,7 @@ function ChapterCard({ chapter }) {
       {isOpen && (
         <div className="questions-list">
           {questions.length === 0 ? (
-            <p className="empty">No questions added yet.</p>
+            <p className="empty">No approved questions yet for this chapter.</p>
           ) : (
             questions.map((item) => (
               <QuestionCard key={item.id} question={item} />

@@ -1,91 +1,102 @@
 .chapter-card {
   background: linear-gradient(
     180deg,
-    rgba(30, 34, 53, 0.95),
-    rgba(24, 28, 39, 0.95)
+    rgba(30, 34, 53, 0.98),
+    rgba(24, 28, 39, 0.98)
   );
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .chapter-card:hover {
   border-color: rgba(79, 142, 247, 0.45);
+  transform: translateY(-1px);
 }
 
 .chapter-card.open {
-  border-color: rgba(79, 142, 247, 0.55);
+  border-color: rgba(79, 142, 247, 0.65);
 }
 
 .chapter-header {
   width: 100%;
-  padding: 18px;
+  padding: 18px 20px;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.chapter-left {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: transparent;
-  color: var(--text);
-  border: none;
-  text-align: left;
-  cursor: pointer;
-}
-
-.chapter-header:hover {
-  background: rgba(79, 142, 247, 0.04);
+  min-width: 0;
 }
 
 .chapter-number {
   background: var(--accent-soft);
   color: var(--accent);
-  padding: 5px 10px;
-  border-radius: 8px;
+  padding: 6px 10px;
+  border-radius: 9px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
   flex-shrink: 0;
 }
 
 .chapter-header h3 {
-  flex: 1;
-  font-size: 18px;
-  line-height: 1.4;
+  font-size: 17px;
+  line-height: 1.35;
+  margin-bottom: 4px;
 }
 
-.qa-count {
+.chapter-header p {
   color: var(--muted);
   font-size: 13px;
-  white-space: nowrap;
 }
 
 .chapter-arrow {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
+  flex-shrink: 0;
 }
 
 .questions-list {
-  padding: 16px;
-  border-top: 1px solid var(--border);
+  padding: 0 20px 18px;
 }
 
 .empty {
   color: var(--muted);
   font-size: 14px;
-  padding: 10px 0;
+  padding: 22px;
   text-align: center;
+  background: rgba(15, 17, 23, 0.35);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
 }
 
 @media (max-width: 600px) {
   .chapter-header {
-    align-items: flex-start;
-    gap: 10px;
     padding: 16px;
   }
 
-  .chapter-header h3 {
-    font-size: 16px;
+  .chapter-left {
+    align-items: flex-start;
   }
 
-  .qa-count {
+  .chapter-header h3 {
+    font-size: 15px;
+  }
+
+  .chapter-header p {
     font-size: 12px;
   }
 }
