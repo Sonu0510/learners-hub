@@ -1,13 +1,14 @@
 import "./Hero.css";
 
-function Hero() {
+function Hero({ onOpenDoubtModal }) {
   return (
     <section className="hero">
-      <div className="hero-badge">Free Learning Resources . Open for Students</div>
+      <div className="hero-badge">
+        Free Learning Resources . Open for Students
+      </div>
 
       <h1>
-        Every question deserves <br />
-        a <span>clear answer.</span>
+        Every question deserves <br />a <span>clear answer.</span>
       </h1>
 
       <p>
@@ -16,8 +17,12 @@ function Hero() {
       </p>
 
       <div className="hero-actions">
-        <a href="#chapters" className="primary-btn">Browse Chapters</a>
-        <button className="secondary-btn">Submit a Doubt</button>
+        <a href="#chapters" className="primary-btn">
+          Browse Chapters
+        </a>
+        <button className="secondary-btn" onClick={onOpenDoubtModal}>
+          Submit a Doubt
+        </button>
       </div>
     </section>
   );

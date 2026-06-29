@@ -69,7 +69,7 @@ function Home() {
     <div className="page">
       <Header />
 
-      <Hero />
+      <Hero onOpenDoubtModal={() => setIsDoubtModalOpen(true)} />
 
       <main className="container" id="chapters">
         <Stats
@@ -87,13 +87,6 @@ function Home() {
 
             <p>Browse chapter-wise questions and teacher-written answers.</p>
           </div>
-
-          <button
-            className="primary-btn"
-            onClick={() => setIsDoubtModalOpen(true)}
-          >
-            Submit a Doubt
-          </button>
         </section>
 
         <ChapterList chapters={filteredChapters} />
