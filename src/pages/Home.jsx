@@ -9,6 +9,7 @@ import SearchBar from "../components/SearchBar";
 import ChapterList from "../components/ChapterList";
 import DoubtModal from "../components/DoubtModal";
 import Notification from "../components/Notification";
+import TeacherInboxPreview from "../components/TeacherInboxPreview";
 
 import "./Home.css";
 
@@ -96,7 +97,7 @@ function Home() {
             <p>Browse chapter-wise questions and teacher-written answers.</p>
           </div>
         </section>
-
+        <TeacherInboxPreview doubts={studentDoubts} />
         <ChapterList chapters={filteredChapters} />
 
         {filteredChapters.length === 0 && (

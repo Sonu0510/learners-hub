@@ -1,0 +1,18 @@
+.teacher-preview {
+  margin: 22px 0;
+  padding: 18px;
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.22);
+  border-radius: var(--radius);
+}
+
+.teacher-preview-label {
+  color: #34d399;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.teacher-preview h3 {
+  font-size: 20px;
+}
