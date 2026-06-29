@@ -8,32 +8,40 @@ import Stats from "../components/Stats";
 import SearchBar from "../components/SearchBar";
 import ChapterList from "../components/ChapterList";
 import DoubtModal from "../components/DoubtModal";
+import Notification from "../components/Notification";
+
 import "./Home.css";
 
 function Home() {
-  const totalQuestions = scienceData.chapters.reduce(
-    (total, chapter) => total + chapter.questions.length,
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isDoubtModalOpen, setIsDoubtModalOpen] = useState(false);
+  const [studentDoubts, setStudentDoubts] = useState([]);
+  const [notification, setNotification] = useState(null);
+
+  const chapters = scienceData.chapters || [];
+
+  const totalQuestions = chapters.reduce(
+    (total, chapter) => total + (chapter.questions || []).length,
     0,
   );
 
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const filteredChapters = scienceData.chapters
+  const filteredChapters = chapters
     .map((chapter) => {
       const term = searchTerm.toLowerCase().trim();
+      const questions = chapter.questions || [];
 
       if (!term) return chapter;
 
       const chapterMatches =
-        chapter.name.toLowerCase().includes(term) ||
+        String(chapter.name).toLowerCase().includes(term) ||
         String(chapter.chapter_number).includes(term);
 
-      const filteredQuestions = chapter.questions.filter((question) => {
-        const questionText = question.question.toLowerCase();
+      const filteredQuestions = questions.filter((question) => {
+        const questionText = String(question.question).toLowerCase();
 
         const answerText =
           question.answers
-            ?.map((answer) => answer.answer.toLowerCase())
+            ?.map((answer) => String(answer.answer).toLowerCase())
             .join(" ") || "";
 
         return questionText.includes(term) || answerText.includes(term);
@@ -42,16 +50,13 @@ function Home() {
       if (chapterMatches || filteredQuestions.length > 0) {
         return {
           ...chapter,
-          questions: chapterMatches ? chapter.questions : filteredQuestions,
+          questions: chapterMatches ? questions : filteredQuestions,
         };
       }
 
       return null;
     })
     .filter(Boolean);
-
-  const [isDoubtModalOpen, setIsDoubtModalOpen] = useState(false);
-  const [studentDoubts, setStudentDoubts] = useState([]);
 
   function handleDoubtSubmit(newDoubt) {
     setStudentDoubts((previousDoubts) => [
@@ -62,7 +67,15 @@ function Home() {
       },
     ]);
 
-    alert("Your doubt has been submitted for teacher review.");
+    setNotification({
+      type: "success",
+      title: "Doubt Submitted",
+      message: "Your teacher will review your question soon.",
+    });
+
+    setTimeout(() => {
+      setNotification(null);
+    }, 3500);
   }
 
   return (
@@ -72,19 +85,14 @@ function Home() {
       <Hero onOpenDoubtModal={() => setIsDoubtModalOpen(true)} />
 
       <main className="container" id="chapters">
-        <Stats
-          chapters={scienceData.chapters.length}
-          questions={totalQuestions}
-        />
+        <Stats chapters={chapters.length} questions={totalQuestions} />
 
         <SearchBar value={searchTerm} onChange={setSearchTerm} />
 
         <section className="course-banner">
           <div>
             <span className="course-label">Currently Available</span>
-
             <h2>Class 9 Science</h2>
-
             <p>Browse chapter-wise questions and teacher-written answers.</p>
           </div>
         </section>
@@ -98,9 +106,17 @@ function Home() {
         )}
       </main>
 
+      {notification && (
+        <Notification
+          type={notification.type}
+          title={notification.title}
+          message={notification.message}
+        />
+      )}
+
       {isDoubtModalOpen && (
         <DoubtModal
-          chapters={scienceData.chapters}
+          chapters={chapters}
           onClose={() => setIsDoubtModalOpen(false)}
           onSubmit={handleDoubtSubmit}
         />
