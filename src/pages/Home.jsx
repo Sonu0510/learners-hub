@@ -10,13 +10,14 @@ import ChapterList from "../components/ChapterList";
 import DoubtModal from "../components/DoubtModal";
 import Notification from "../components/Notification";
 import TeacherInboxPreview from "../components/TeacherInboxPreview";
+import { useLearnersHub } from "../contexts/LearnersHubContext";
 
 import "./Home.css";
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState("");
+  const { studentDoubts, setStudentDoubts } = useLearnersHub();
   const [isDoubtModalOpen, setIsDoubtModalOpen] = useState(false);
-  const [studentDoubts, setStudentDoubts] = useState([]);
   const [notification, setNotification] = useState(null);
 
   const chapters = scienceData.chapters || [];
