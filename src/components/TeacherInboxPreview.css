@@ -16,3 +16,69 @@
 .teacher-preview h3 {
   font-size: 20px;
 }
+.teacher-preview {
+  margin: 22px 0;
+  padding: 18px;
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.22);
+  border-radius: var(--radius);
+}
+
+.teacher-preview-header {
+  margin-bottom: 16px;
+}
+
+.teacher-preview-label {
+  color: #34d399;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.teacher-preview h3 {
+  font-size: 20px;
+}
+
+.doubt-list {
+  display: grid;
+  gap: 12px;
+}
+
+.doubt-card {
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.doubt-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.status-badge {
+  background: rgba(245, 158, 11, 0.14);
+  color: #f59e0b;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.chapter-name {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.student-name {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.doubt-question {
+  color: var(--text);
+  line-height: 1.6;
+}

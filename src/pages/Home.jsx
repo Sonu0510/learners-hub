@@ -97,7 +97,7 @@ function Home() {
             <p>Browse chapter-wise questions and teacher-written answers.</p>
           </div>
         </section>
-        <TeacherInboxPreview doubts={studentDoubts} />
+        <TeacherInboxPreview doubts={studentDoubts} chapters={chapters} />
         <ChapterList chapters={filteredChapters} />
 
         {filteredChapters.length === 0 && (
