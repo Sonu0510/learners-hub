@@ -1,0 +1,128 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 8, 15, 0.74);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.doubt-modal {
+  width: 100%;
+  max-width: 520px;
+  background: var(--card);
+  border: 1px solid rgba(79, 142, 247, 0.35);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.modal-header h2 {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.modal-header p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.close-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.doubt-modal label {
+  display: block;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.doubt-modal label span {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.doubt-modal input,
+.doubt-modal select,
+.doubt-modal textarea {
+  width: 100%;
+  margin-top: 8px;
+  padding: 13px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+}
+
+.doubt-modal input:focus,
+.doubt-modal select:focus,
+.doubt-modal textarea:focus {
+  border-color: var(--accent);
+}
+
+.doubt-modal textarea {
+  resize: vertical;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.cancel-btn,
+.send-btn {
+  padding: 11px 16px;
+  border-radius: 9px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.send-btn {
+  background: #34d399;
+  color: #06291c;
+  border: none;
+}
+
+@media (max-width: 600px) {
+  .doubt-modal {
+    padding: 20px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .cancel-btn,
+  .send-btn {
+    width: 100%;
+  }
+}

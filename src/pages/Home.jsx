@@ -7,13 +7,13 @@ import Hero from "../components/Hero";
 import Stats from "../components/Stats";
 import SearchBar from "../components/SearchBar";
 import ChapterList from "../components/ChapterList";
-
+import DoubtModal from "../components/DoubtModal";
 import "./Home.css";
 
 function Home() {
   const totalQuestions = scienceData.chapters.reduce(
     (total, chapter) => total + chapter.questions.length,
-    0
+    0,
   );
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -36,24 +36,34 @@ function Home() {
             ?.map((answer) => answer.answer.toLowerCase())
             .join(" ") || "";
 
-        return (
-          questionText.includes(term) ||
-          answerText.includes(term)
-        );
+        return questionText.includes(term) || answerText.includes(term);
       });
 
       if (chapterMatches || filteredQuestions.length > 0) {
         return {
           ...chapter,
-          questions: chapterMatches
-            ? chapter.questions
-            : filteredQuestions,
+          questions: chapterMatches ? chapter.questions : filteredQuestions,
         };
       }
 
       return null;
     })
     .filter(Boolean);
+
+  const [isDoubtModalOpen, setIsDoubtModalOpen] = useState(false);
+  const [studentDoubts, setStudentDoubts] = useState([]);
+
+  function handleDoubtSubmit(newDoubt) {
+    setStudentDoubts((previousDoubts) => [
+      ...previousDoubts,
+      {
+        id: Date.now(),
+        ...newDoubt,
+      },
+    ]);
+
+    alert("Your doubt has been submitted for teacher review.");
+  }
 
   return (
     <div className="page">
@@ -62,32 +72,26 @@ function Home() {
       <Hero />
 
       <main className="container" id="chapters">
-
         <Stats
           chapters={scienceData.chapters.length}
           questions={totalQuestions}
         />
 
-        <SearchBar
-          value={searchTerm}
-          onChange={setSearchTerm}
-        />
+        <SearchBar value={searchTerm} onChange={setSearchTerm} />
 
         <section className="course-banner">
           <div>
-            <span className="course-label">
-              Currently Available
-            </span>
+            <span className="course-label">Currently Available</span>
 
             <h2>Class 9 Science</h2>
 
-            <p>
-              Browse chapter-wise questions and
-              teacher-written answers.
-            </p>
+            <p>Browse chapter-wise questions and teacher-written answers.</p>
           </div>
 
-          <button className="primary-btn">
+          <button
+            className="primary-btn"
+            onClick={() => setIsDoubtModalOpen(true)}
+          >
             Submit a Doubt
           </button>
         </section>
@@ -99,8 +103,15 @@ function Home() {
             No matching chapter, question or answer found.
           </p>
         )}
-
       </main>
+
+      {isDoubtModalOpen && (
+        <DoubtModal
+          chapters={scienceData.chapters}
+          onClose={() => setIsDoubtModalOpen(false)}
+          onSubmit={handleDoubtSubmit}
+        />
+      )}
     </div>
   );
 }
